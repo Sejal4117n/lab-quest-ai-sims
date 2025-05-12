@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -290,6 +289,7 @@ const EnhancedChemistrySimulation: React.FC = () => {
     }));
   };
 
+  // Format time function
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
@@ -357,16 +357,21 @@ const EnhancedChemistrySimulation: React.FC = () => {
             labState={labState}
             onHeaterToggle={handleHeaterToggle}
             onTimerToggle={handleTimerToggle}
-            onExperimentSelect={(exp) => setLabState(prev => ({ ...prev, activeExperiment: exp }))}
-            onModeSelect={(mode) => setLabState(prev => ({ ...prev, mode: mode }))}
+            onExperimentChange={(exp) => setLabState(prev => ({ ...prev, activeExperiment: exp }))}
+            onModeChange={(mode) => setLabState(prev => ({ ...prev, mode: mode }))}
             onReset={resetExperiment}
+            formatTime={formatTime}
           />
         </div>
       </div>
       
       {/* Bottom Panel - Observations */}
       <div className="bg-white rounded-lg shadow-md p-4">
-        <ObservationsPanel labState={labState} />
+        <ObservationsPanel 
+          observations={labState.observations}
+          reactionLog={labState.reactionLog || []}
+          activeExperiment={labState.activeExperiment}
+        />
       </div>
       
       {/* Audio elements for sound effects */}
