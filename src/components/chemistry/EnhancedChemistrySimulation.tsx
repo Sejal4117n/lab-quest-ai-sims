@@ -342,7 +342,7 @@ const EnhancedChemistrySimulation: React.FC = () => {
         
         {/* Center Panel - Lab Bench */}
         <div className="col-span-12 md:col-span-6 bg-white rounded-lg shadow-md p-3">
-          <div className="h-[500px]">
+          <div className="h-[500px] relative overflow-hidden">
             <LabBench 
               labState={labState} 
               onAddChemical={handleAddChemical}

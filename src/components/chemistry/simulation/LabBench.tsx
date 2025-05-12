@@ -1,8 +1,8 @@
-
 import React, { useState, useEffect } from 'react';
 import { Beaker, FlaskConical, TestTube, Flame, ThermometerSun as Thermometer, PlayCircle } from "lucide-react";
 import { LabSimulationState, Chemical, ChemicalMixture, Glassware } from '@/types/experiments';
 import { useToast } from "@/hooks/use-toast";
+import { Button } from "@/components/ui/button";
 
 interface LabBenchProps {
   labState: LabSimulationState;
@@ -23,6 +23,7 @@ const LabBench: React.FC<LabBenchProps> = ({
   const [steamEffects, setSteamEffects] = useState<Record<string, boolean>>({});
   const [thermometerAnimating, setThermometerAnimating] = useState(false);
   const [previousTemperature, setPreviousTemperature] = useState(labState.temperature);
+  const [selectedApparatus, setSelectedApparatus] = useState<string | null>(null);
   
   // Sound effects
   const playSound = (soundName: string) => {
@@ -165,6 +166,20 @@ const LabBench: React.FC<LabBenchProps> = ({
     setHoveredGlassware(null);
   };
   
+  // Handle apparatus selection
+  const handleApparatusSelect = (apparatusType: string) => {
+    setSelectedApparatus(apparatusType);
+    playSound('pour');
+    
+    toast({
+      title: `${apparatusType} Selected`,
+      description: `${apparatusType} is ready to use in your experiment.`,
+    });
+    
+    // Reset selection after animation
+    setTimeout(() => setSelectedApparatus(null), 2000);
+  };
+
   // Clear all effects when experiment is reset
   useEffect(() => {
     setExplosionEffects({});
@@ -559,6 +574,47 @@ const LabBench: React.FC<LabBenchProps> = ({
     );
   };
 
+  // Render the apparatus shelf
+  const renderApparatusShelf = () => {
+    return (
+      <div className="absolute left-6 top-6 bg-white p-4 rounded-lg shadow-lg w-[150px]">
+        <div className="text-sm font-medium mb-3 text-gray-700">Laboratory Apparatus</div>
+        <div className="grid grid-cols-1 gap-4">
+          <Button 
+            variant="outline" 
+            className={`flex items-center gap-2 p-3 ${selectedApparatus === 'Beaker' ? 'bg-blue-100' : ''}`}
+            onClick={() => handleApparatusSelect('Beaker')}
+          >
+            <Beaker className="h-6 w-6 text-blue-500" />
+            <span>Beaker</span>
+          </Button>
+          
+          <Button 
+            variant="outline" 
+            className={`flex items-center gap-2 p-3 ${selectedApparatus === 'Test Tube' ? 'bg-purple-100' : ''}`}
+            onClick={() => handleApparatusSelect('Test Tube')}
+          >
+            <TestTube className="h-6 w-6 text-purple-500" />
+            <span>Test Tube</span>
+          </Button>
+          
+          <Button 
+            variant="outline" 
+            className={`flex items-center gap-2 p-3 ${selectedApparatus === 'Flask' ? 'bg-green-100' : ''}`}
+            onClick={() => handleApparatusSelect('Flask')}
+          >
+            <FlaskConical className="h-6 w-6 text-green-500" />
+            <span>Flask</span>
+          </Button>
+        </div>
+        
+        <div className="mt-4 text-xs text-gray-500">
+          Click to select apparatus
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="h-full relative flex items-center justify-center rounded-lg overflow-hidden">
       {/* Lab table background */}
@@ -579,6 +635,14 @@ const LabBench: React.FC<LabBenchProps> = ({
           @keyframes fly-away {
             0% { transform: translate(0, 0) rotate(0deg); opacity: 0.7; }
             100% { transform: translate(var(--tx, 50px), var(--ty, 50px)) rotate(var(--tr, 180deg)); opacity: 0; }
+          }
+          @keyframes apparatus-glow {
+            0% { box-shadow: 0 0 5px rgba(100, 100, 255, 0.3); }
+            50% { box-shadow: 0 0 15px rgba(100, 100, 255, 0.6); }
+            100% { box-shadow: 0 0 5px rgba(100, 100, 255, 0.3); }
+          }
+          .apparatus-active {
+            animation: apparatus-glow 2s infinite;
           }
         `}
       </style>
@@ -618,6 +682,9 @@ const LabBench: React.FC<LabBenchProps> = ({
         ))}
       </div>
       
+      {/* Render the apparatus shelf */}
+      {renderApparatusShelf()}
+      
       {renderExperimentGuide()}
       
       {/* pH strip if pH indicator is used */}
@@ -643,36 +710,6 @@ const LabBench: React.FC<LabBenchProps> = ({
           </div>
         </div>
       )}
-
-      {/* Apparatus shelf */}
-      <div className="absolute top-6 left-6">
-        <div className="bg-white p-2 rounded-lg shadow-md">
-          <div className="text-xs text-gray-500 mb-2">Apparatus</div>
-          <div className="flex flex-col gap-3">
-            <div className="group flex items-center gap-2 cursor-pointer hover:bg-gray-100 p-1 rounded transition-colors">
-              <div className="relative">
-                <Beaker className="h-6 w-6 text-blue-500 transition-transform group-hover:scale-110" />
-                <div className="absolute -top-1 -right-1 w-2 h-2 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              </div>
-              <span className="text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity">Beaker</span>
-            </div>
-            <div className="group flex items-center gap-2 cursor-pointer hover:bg-gray-100 p-1 rounded transition-colors">
-              <div className="relative">
-                <TestTube className="h-6 w-6 text-purple-500 transition-transform group-hover:scale-110" />
-                <div className="absolute -top-1 -right-1 w-2 h-2 bg-purple-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              </div>
-              <span className="text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity">Test Tube</span>
-            </div>
-            <div className="group flex items-center gap-2 cursor-pointer hover:bg-gray-100 p-1 rounded transition-colors">
-              <div className="relative">
-                <FlaskConical className="h-6 w-6 text-green-500 transition-transform group-hover:scale-110" />
-                <div className="absolute -top-1 -right-1 w-2 h-2 bg-green-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              </div>
-              <span className="text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity">Flask</span>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 };
