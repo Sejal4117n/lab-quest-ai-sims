@@ -199,9 +199,8 @@
   @apply transform -translate-y-1 shadow-lg;
 }
 
-/* Fixing circular dependency - directly define the dark mode hover card shadow */
 .dark .hover-card:hover {
-  box-shadow: 0 0 15px rgba(79, 70, 229, 0.4);
+  box-shadow: 0 0 15px rgba(79,70,229,0.4);
 }
 
 /* Button hover effects */
@@ -227,11 +226,75 @@
   @apply bg-gray-800/80 backdrop-blur-sm border border-gray-700 shadow-md;
 }
 
-/* Fix for interactive-card in dark mode to avoid circular dependency */
 .dark .interactive-card {
   box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
 }
 
 .dark .interactive-card:hover {
   box-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+}
+
+/* Chemistry lab special effects */
+/* Glass breaking animation for explosive reactions */
+.glass-broken {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.crack-1, .crack-2, .crack-3 {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.7);
+  height: 2px;
+  width: 0;
+  animation: crack-animation 0.5s forwards;
+}
+
+@keyframes crack-animation {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  100% {
+    width: 80%;
+    opacity: 1;
+  }
+}
+
+.crack-1 {
+  top: 30%;
+  left: 10%;
+  transform: rotate(20deg);
+  animation-delay: 0.1s;
+}
+
+.crack-2 {
+  top: 50%;
+  left: 20%;
+  transform: rotate(-15deg);
+  animation-delay: 0.2s;
+}
+
+.crack-3 {
+  top: 40%;
+  left: 40%;
+  transform: rotate(40deg);
+  animation-delay: 0.3s;
+}
+
+/* Delay for animation sequences */
+.delay-150 {
+  animation-delay: 150ms;
+}
+
+/* Chemical reaction interactions */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px) rotate(-2deg); }
+  75% { transform: translateX(5px) rotate(2deg); }
+}
+
+.animate-shake {
+  animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
 }
