@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { TestTube, AlertTriangle } from "lucide-react";
+import { TestTube, AlertTriangle, FlaskConical, Beaker } from "lucide-react";
 import { Chemical } from '@/types/experiments';
 
 interface ChemicalShelfProps {
@@ -20,6 +20,25 @@ const ChemicalShelf: React.FC<ChemicalShelfProps> = ({ chemicals }) => {
   const handleDragStart = (e: React.DragEvent, chemical: Chemical) => {
     e.dataTransfer.setData('chemical', JSON.stringify(chemical));
     e.dataTransfer.effectAllowed = 'copy';
+  };
+
+  const getContainerIcon = (type: string) => {
+    switch(type) {
+      case 'acid':
+        return <TestTube className="w-5 h-5 text-red-500" />;
+      case 'base':
+        return <Beaker className="w-5 h-5 text-blue-500" />;
+      case 'salt':
+        return <TestTube className="w-5 h-5 text-purple-500" />;
+      case 'metal':
+        return <Beaker className="w-5 h-5 text-gray-500" />;
+      case 'indicator':
+        return <TestTube className="w-5 h-5 text-amber-500" />;
+      case 'catalyst':
+        return <FlaskConical className="w-5 h-5 text-green-500" />;
+      default:
+        return <TestTube className="w-5 h-5" />;
+    }
   };
 
   return (
@@ -75,7 +94,7 @@ const ChemicalShelf: React.FC<ChemicalShelfProps> = ({ chemicals }) => {
       </div>
       
       <ScrollArea className="h-[480px] pr-3">
-        <div className="grid grid-cols-1 gap-2">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {getFilteredChemicals().map(chemical => (
             <div
               key={chemical.id}
@@ -83,15 +102,30 @@ const ChemicalShelf: React.FC<ChemicalShelfProps> = ({ chemicals }) => {
               draggable="true"
               onDragStart={(e) => handleDragStart(e, chemical)}
             >
-              <div className="flex items-start gap-3">
-                <div 
-                  className="w-8 h-8 rounded-full flex-shrink-0 border" 
-                  style={{ backgroundColor: chemical.color }}
-                />
-                <div className="flex-1">
+              <div className="flex flex-col items-center gap-2">
+                {/* Test Tube Container with Liquid */}
+                <div className="relative w-12 h-20 flex items-center justify-center">
+                  {/* Test tube outline */}
+                  <div className="absolute w-7 h-16 rounded-b-full border-2 border-gray-300"></div>
+                  {/* Test tube liquid */}
+                  <div 
+                    className="absolute bottom-0 w-6 h-12 rounded-b-full transition-all duration-300" 
+                    style={{ backgroundColor: chemical.color }}
+                  ></div>
+                  {/* Test tube top rim */}
+                  <div className="absolute top-0 w-10 h-1.5 bg-gray-300 rounded-t-md"></div>
+                  
+                  {/* Chemical type icon overlay */}
+                  <div className="absolute top-[-10px] right-[-10px]">
+                    {getContainerIcon(chemical.type)}
+                  </div>
+                </div>
+                
+                <div className="text-center">
                   <h4 className="text-sm font-medium">{chemical.name}</h4>
                   <p className="text-xs text-gray-500 font-mono">{chemical.formula}</p>
-                  <div className="flex items-center mt-1 flex-wrap gap-1">
+                  
+                  <div className="flex justify-center mt-1 flex-wrap gap-1">
                     {chemical.hazardLevel === 'high' && (
                       <Badge variant="outline" className="text-xs flex items-center gap-1 border-red-400 text-red-700">
                         <AlertTriangle className="h-3 w-3 text-red-500" />
@@ -104,14 +138,6 @@ const ChemicalShelf: React.FC<ChemicalShelfProps> = ({ chemicals }) => {
                         {chemical.hazardLabel || 'Caution'}
                       </Badge>
                     )}
-                    {chemical.concentration && (
-                      <Badge variant="secondary" className="text-xs">
-                        {chemical.concentration * 100}%
-                      </Badge>
-                    )}
-                    <Badge variant="outline" className="text-xs capitalize">
-                      {chemical.type}
-                    </Badge>
                   </div>
                 </div>
               </div>
