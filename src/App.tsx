@@ -18,7 +18,6 @@ import BiologyModels from "./pages/BiologyModels";
 import ChemistryExperiment from "./pages/ChemistryExperiment";
 import PhysicsExperiment from "./pages/PhysicsExperiment";
 import ChemistryLab from "./pages/ChemistryLab";
-import VirtualChemistryLab from "./pages/VirtualChemistryLab";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
 import About from "./pages/About";
@@ -49,7 +48,6 @@ const App = () => (
               <Route path="/biology/models" element={<BiologyModels />} />
               <Route path="/chemistry/:experimentId" element={<ChemistryExperiment />} />
               <Route path="/chemistry/lab" element={<ChemistryLab />} />
-              <Route path="/chemistry/virtual-lab" element={<VirtualChemistryLab />} />
               <Route path="/physics/:experimentId" element={<PhysicsExperiment />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
