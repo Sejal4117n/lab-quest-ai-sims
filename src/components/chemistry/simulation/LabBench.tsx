@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Beaker, FlaskConical, TestTube, Flame, ThermometerSun as Thermometer, PlayCircle } from "lucide-react";
 import { LabSimulationState, Chemical, ChemicalMixture, Glassware } from '@/types/experiments';
@@ -289,7 +290,7 @@ const LabBench: React.FC<LabBenchProps> = ({
             className={`relative ${hoveredGlassware === glass.id ? 'scale-105' : ''} transition-transform`}
             style={{ width: '80px', height: '100px' }}
           >
-            <Beaker className="w-full h-full text-gray-300" />
+            <Beaker className="w-full h-full text-white" />
             <div 
               className="absolute bottom-[15%] left-1/2 transform -translate-x-1/2 w-4/5 rounded-b-lg transition-all duration-500" 
               style={{ 
@@ -354,7 +355,7 @@ const LabBench: React.FC<LabBenchProps> = ({
             className={`relative group ${hoveredGlassware === glass.id ? 'scale-105' : ''} transition-transform`}
             style={{ width: '40px', height: '120px' }}
           >
-            <TestTube className="w-full h-full text-gray-300" />
+            <TestTube className="w-full h-full text-white" />
             <div 
               className="absolute bottom-[10%] left-1/2 transform -translate-x-1/2 w-3/5 rounded-b-full transition-all duration-500" 
               style={{ 
@@ -419,7 +420,7 @@ const LabBench: React.FC<LabBenchProps> = ({
             className={`relative group ${hoveredGlassware === glass.id ? 'scale-105' : ''} transition-transform`}
             style={{ width: '80px', height: '100px' }}
           >
-            <FlaskConical className="w-full h-full text-gray-300" />
+            <FlaskConical className="w-full h-full text-white" />
             <div 
               className="absolute bottom-[10%] left-1/2 transform -translate-x-1/2 w-3/5 rounded-b-full transition-all duration-500" 
               style={{ 
@@ -479,7 +480,7 @@ const LabBench: React.FC<LabBenchProps> = ({
           </div>
         );
       default:
-        return <TestTube className="w-16 h-16 text-gray-300" />;
+        return <TestTube className="w-16 h-16 text-white" />;
     }
   };
 
@@ -585,7 +586,7 @@ const LabBench: React.FC<LabBenchProps> = ({
             className={`flex items-center gap-2 p-3 ${selectedApparatus === 'Beaker' ? 'bg-blue-100' : ''}`}
             onClick={() => handleApparatusSelect('Beaker')}
           >
-            <Beaker className="h-6 w-6 text-blue-500" />
+            <Beaker className="h-6 w-6 text-blue-600" />
             <span>Beaker</span>
           </Button>
           
@@ -594,7 +595,7 @@ const LabBench: React.FC<LabBenchProps> = ({
             className={`flex items-center gap-2 p-3 ${selectedApparatus === 'Test Tube' ? 'bg-purple-100' : ''}`}
             onClick={() => handleApparatusSelect('Test Tube')}
           >
-            <TestTube className="h-6 w-6 text-purple-500" />
+            <TestTube className="h-6 w-6 text-purple-600" />
             <span>Test Tube</span>
           </Button>
           
@@ -603,7 +604,7 @@ const LabBench: React.FC<LabBenchProps> = ({
             className={`flex items-center gap-2 p-3 ${selectedApparatus === 'Flask' ? 'bg-green-100' : ''}`}
             onClick={() => handleApparatusSelect('Flask')}
           >
-            <FlaskConical className="h-6 w-6 text-green-500" />
+            <FlaskConical className="h-6 w-6 text-green-600" />
             <span>Flask</span>
           </Button>
         </div>
