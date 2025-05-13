@@ -13,19 +13,19 @@ const ChemistryVirtualLab = () => {
       
       <main className="flex-1 container py-8">
         <div className="mb-6">
-          <h1 className="text-3xl md:text-4xl font-bold">Virtual Chemistry Equation Builder</h1>
+          <h1 className="text-3xl md:text-4xl font-bold">Interactive Chemistry Simulations</h1>
           <p className="text-muted-foreground mt-2">
-            Learn chemistry principles with interactive simulations
+            Learn chemistry principles with interactive simulations and explore molarity concepts
           </p>
         </div>
         
         <Tabs defaultValue="molarity" className="mb-6">
           <TabsList className="grid grid-cols-2 mb-6 w-full md:w-[400px]">
-            <TabsTrigger value="molarity">
+            <TabsTrigger value="molarity" className="text-base">
               <BeakerIcon className="w-4 h-4 mr-2" />
-              Molarity
+              Molarity Simulation
             </TabsTrigger>
-            <TabsTrigger value="equations">
+            <TabsTrigger value="equations" className="text-base">
               <ArrowLeftRight className="w-4 h-4 mr-2" />
               Equations
             </TabsTrigger>
@@ -33,11 +33,11 @@ const ChemistryVirtualLab = () => {
           
           <TabsContent value="molarity">
             <div className="flex items-center space-x-4 mb-4">
-              <div className="bg-purple-100 p-2 rounded-full">
-                <BeakerIcon className="h-6 w-6 text-purple-600" />
+              <div className="bg-purple-100 p-2 rounded-full dark:bg-purple-900/30">
+                <BeakerIcon className="h-6 w-6 text-purple-600 dark:text-purple-300" />
               </div>
               <div>
-                <h2 className="text-xl font-semibold">Molarity Simulation</h2>
+                <h2 className="text-xl font-semibold">Interactive Molarity Simulation</h2>
                 <p className="text-muted-foreground">Explore the relationship between solute, volume, and concentration</p>
               </div>
             </div>
@@ -71,8 +71,8 @@ const ChemistryVirtualLab = () => {
           
           <TabsContent value="equations">
             <div className="flex items-center space-x-4 mb-4">
-              <div className="bg-blue-100 p-2 rounded-full">
-                <ArrowLeftRight className="h-6 w-6 text-blue-600" />
+              <div className="bg-blue-100 p-2 rounded-full dark:bg-blue-900/30">
+                <ArrowLeftRight className="h-6 w-6 text-blue-600 dark:text-blue-300" />
               </div>
               <div>
                 <h2 className="text-xl font-semibold">Chemical Equations</h2>

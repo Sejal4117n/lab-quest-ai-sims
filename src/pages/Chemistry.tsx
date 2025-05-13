@@ -65,7 +65,32 @@ const Chemistry = () => {
           <p className="text-gray-600 dark:text-gray-300 mt-2">Explore the fascinating world of chemical reactions and transformations</p>
         </div>
         
-        {/* Virtual Chemistry Lab Card */}
+        {/* Featured Molarity Simulation Card */}
+        <Card className="mb-10 overflow-hidden hover:shadow-lg transition-shadow border-purple-200 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/30 dark:to-blue-900/30 dark:border-purple-800/50">
+          <div className="p-6 flex items-center justify-between">
+            <div className="flex items-center">
+              <div className="w-16 h-16 bg-blue-200 dark:bg-blue-800 rounded-full flex items-center justify-center">
+                <Beaker className="w-8 h-8 text-blue-700 dark:text-blue-300" />
+              </div>
+              <div className="ml-4">
+                <h3 className="text-2xl font-bold mb-1 dark:text-gray-50">Molarity Simulation</h3>
+                <p className="text-gray-700 dark:text-gray-300 mb-4">
+                  Interactive PhET-style simulation to explore concentration and molarity principles
+                </p>
+                <Button asChild className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600">
+                  <Link to="/chemistry/virtual-lab">
+                    Try Molarity Simulation
+                  </Link>
+                </Button>
+              </div>
+            </div>
+            <div className="hidden md:flex space-x-4">
+              <Beaker className="w-12 h-12 text-blue-400 dark:text-blue-500" />
+            </div>
+          </div>
+        </Card>
+        
+        {/* Interactive Equation Builder Card */}
         <Card className="mb-10 overflow-hidden hover:shadow-lg transition-shadow border-purple-200 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/30 dark:to-blue-900/30 dark:border-purple-800/50">
           <div className="p-6 flex items-center justify-between">
             <div className="flex items-center">
