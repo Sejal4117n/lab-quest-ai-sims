@@ -75,11 +75,11 @@ const Chemistry = () => {
               <div className="ml-4">
                 <h3 className="text-2xl font-bold mb-1 dark:text-gray-50">Interactive Equation Builder</h3>
                 <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  Build and balance chemical equations with realistic reactions and explosive effects
+                  Build and balance chemical equations with realistic reactions and explore molarity principles
                 </p>
                 <Button asChild className="bg-purple-600 hover:bg-purple-700 dark:bg-purple-700 dark:hover:bg-purple-600">
                   <Link to="/chemistry/virtual-lab">
-                    Build Chemical Equations
+                    Explore Molarity & Equations
                   </Link>
                 </Button>
               </div>
