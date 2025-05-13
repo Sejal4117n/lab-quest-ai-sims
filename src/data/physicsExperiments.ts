@@ -1,61 +1,120 @@
 
-import { PhysicsExperiments } from '@/types/experiments';
+import { PhysicsExperimentData } from "@/types/experiments";
 
-export const experiments: PhysicsExperiments = {
-  'refraction': {
-    title: 'Refraction of Light',
-    description: 'Observe how light changes direction when passing from one medium to another with different refractive indices.',
-    difficulty: 'Beginner',
-    duration: '20 minutes',
-    content: 'This experiment demonstrates Snell\'s Law and the behavior of light at interfaces between media.',
+export const experiments: Record<string, PhysicsExperimentData> = {
+  "projectile": {
+    title: "Projectile Sampling Distributions",
+    description: "Explore statistical distributions of projectile motion with multiple launchers and sample sizes",
+    difficulty: "Intermediate",
+    duration: "30-40 minutes",
+    content: `
+      This experiment explores how projectile motion and statistical sampling distributions are connected. 
+      By launching projectiles with different launchers and collecting data on their landing positions, 
+      you will investigate how sample size affects the distribution of sample means.
+      
+      The simulation allows you to:
+      - Choose from 6 different "mystery launchers" with varying velocities
+      - Select different sample sizes (n = 2, 5, 15, 40)
+      - Launch projectiles in single or continuous mode
+      - View histograms showing the distribution of mean distances
+      - Compare how the sampling distribution changes with different sample sizes
+      
+      This demonstrates the Central Limit Theorem, showing how the distribution of sample means 
+      becomes more normal as sample size increases, regardless of the underlying distribution.
+    `,
     steps: [
-      'Fill a transparent container with water',
-      'Place a pencil or straw in the water',
-      'Observe the apparent bending of the object',
-      'Measure the angles of incidence and refraction',
-      'Calculate the refractive index'
+      "Choose a launcher from the dropdown menu (1-6).",
+      "Select a sample size (2, 5, 15, or 40 projectiles per launch).",
+      "Click 'Launch' to fire the projectiles, or use 'Continuous' mode for automatic launches.",
+      "Observe the landing positions and the histogram showing the distribution of mean distances.",
+      "Compare the histograms for different sample sizes to observe how larger samples produce narrower, more normal distributions.",
+      "Try different bin widths to analyze the histogram data at various resolutions.",
+      "Use the 'Reset' button to clear all data and start a new experiment.",
+      "Compare results between different launchers to identify their unique characteristics."
     ]
   },
-  'ohms-law': {
-    title: 'Ohm\'s Law',
-    description: 'Explore the relationship between voltage, current, and resistance in electrical circuits.',
-    difficulty: 'Intermediate',
-    duration: '35 minutes',
-    content: 'This experiment shows how voltage, current, and resistance are related through Ohm\'s Law (V = IR). By adjusting the voltage of a battery or the resistance in a circuit, you can observe how the current changes according to this fundamental electrical principle.',
+  "pendulum": {
+    title: "Simple Pendulum",
+    description: "Investigate how length and mass affect a pendulum's period",
+    difficulty: "Beginner",
+    duration: "20 minutes",
+    content: "This experiment explores the motion of a simple pendulum and the factors that influence its period (the time it takes to complete one full swing). You will discover that a pendulum's period depends primarily on its length and not on the mass of the bob or the amplitude of the swing (for small angles).",
     steps: [
-      'Set up a simple circuit with battery, resistor, and ammeter',
-      'Measure current at different voltages',
-      'Record voltage and current readings',
-      'Plot voltage vs current graph',
-      'Calculate resistance from the slope'
+      "Adjust the length of the pendulum using the slider.",
+      "Change the mass of the bob using the provided controls.",
+      "Start the pendulum in motion by clicking the 'Release' button.",
+      "Measure the time it takes for the pendulum to complete several oscillations.",
+      "Calculate the period by dividing the total time by the number of oscillations.",
+      "Repeat the experiment with different lengths and masses to compare results.",
+      "Plot your data and analyze the relationship between length and period.",
+      "Compare your experimental results with the theoretical formula: T = 2π√(L/g)."
     ]
   },
-  'wave-interference': {
-    title: 'Water Wave Interference',
-    description: 'Visualize constructive and destructive interference patterns created by overlapping water waves.',
-    difficulty: 'Advanced',
-    duration: '40 minutes',
-    content: 'This experiment demonstrates the principles of wave interference and superposition using a virtual ripple tank. By adjusting the frequency, wavelength, and phase difference between wave sources, you can observe how waves combine to create complex interference patterns. This simulation also covers concepts of diffraction and Young\'s double slit experiment.',
+  "refraction": {
+    title: "Light Refraction",
+    description: "Explore how light bends when passing through different materials",
+    difficulty: "Intermediate",
+    duration: "25 minutes",
+    content: "In this experiment, you will investigate the phenomenon of refraction - the bending of light as it passes from one medium to another. You'll explore Snell's Law, which describes the relationship between the angles of incidence and refraction when light passes through different materials.",
     steps: [
-      'Set up two wave sources in the ripple tank',
-      'Adjust frequency and wavelength parameters',
-      'Observe interference patterns',
-      'Use measurement tools to analyze patterns',
-      'Experiment with obstacles to observe diffraction'
+      "Select a light source and adjust its angle of incidence.",
+      "Choose different materials from the dropdown menu to observe how they affect light refraction.",
+      "Measure the angle of refraction for each material.",
+      "Calculate the index of refraction using Snell's Law: n₁sin(θ₁) = n₂sin(θ₂).",
+      "Experiment with different angles of incidence and observe the changes in refraction.",
+      "Try to find the critical angle where total internal reflection occurs for certain material pairs.",
+      "Plot your data and compare your results with known refractive indices."
     ]
   },
-  'newtons-laws': {
-    title: 'Newton\'s Three Laws of Motion',
-    description: 'Explore and demonstrate Newton\'s three fundamental laws that describe the relationship between an object and the forces acting upon it.',
-    difficulty: 'Intermediate',
-    duration: '45 minutes',
-    content: 'This experiment allows you to interact with simulations of Newton\'s three laws of motion: the Law of Inertia, F=ma, and Action-Reaction. Through interactive demonstrations, you\'ll observe how objects behave under different forces, masses, and environmental conditions.',
+  "ohms-law": {
+    title: "Ohm's Law",
+    description: "Verify the relationship between voltage, current, and resistance",
+    difficulty: "Beginner",
+    duration: "25 minutes",
+    content: "Ohm's Law states that the current through a conductor between two points is directly proportional to the voltage across the two points. In this experiment, you'll verify this fundamental relationship and explore how different resistors affect current flow in a circuit.",
     steps: [
-      'Explore the Law of Inertia by sliding objects across different surfaces',
-      'Test the Second Law (F=ma) by applying different forces to objects with varying masses',
-      'Observe the Third Law by experimenting with action-reaction pairs',
-      'Complete challenges to test your understanding of each law',
-      'Record observations and conclusions in the virtual lab notebook'
+      "Build a simple circuit with the provided components.",
+      "Adjust the voltage source to different values.",
+      "Measure the current flowing through the circuit for each voltage setting.",
+      "Change the resistance value and repeat your measurements.",
+      "Plot voltage vs. current for each resistance value.",
+      "Calculate the slope of each line and verify that it equals 1/R.",
+      "Identify any deviations from Ohm's Law and discuss possible reasons.",
+      "Use your data to predict current for new voltage and resistance combinations."
+    ]
+  },
+  "newtons-laws": {
+    title: "Newton's Laws of Motion",
+    description: "Demonstrate and verify Newton's three laws of motion",
+    difficulty: "Intermediate",
+    duration: "35 minutes",
+    content: "This experiment allows you to explore and verify Sir Isaac Newton's three laws of motion, which form the foundation of classical mechanics. Through interactive simulations, you'll observe how objects behave when forces are applied to them.",
+    steps: [
+      "First Law (Inertia): Observe how objects maintain their state of motion unless acted upon by a force.",
+      "Apply different amounts of friction and observe the changes in motion.",
+      "Second Law (F = ma): Apply various forces to objects of different masses.",
+      "Measure the resulting acceleration and verify the relationship F = ma.",
+      "Third Law (Action-Reaction): Observe how forces always occur in pairs of equal magnitude and opposite direction.",
+      "Use the collision simulator to see how momentum is conserved during interactions.",
+      "Experiment with different combinations of mass and force to predict motion outcomes.",
+      "Record your observations and compare them to Newton's theoretical laws."
+    ]
+  },
+  "wave-interference": {
+    title: "Wave Interference",
+    description: "Study how waves interact to create interference patterns",
+    difficulty: "Advanced",
+    duration: "30 minutes",
+    content: "This experiment explores the fascinating phenomenon of wave interference, where two or more waves overlap to form a resultant wave. You'll investigate constructive and destructive interference and observe how they create distinctive patterns.",
+    steps: [
+      "Generate two wave sources with the same frequency and amplitude.",
+      "Observe the resulting interference pattern as the waves propagate.",
+      "Adjust the distance between the sources and note how the pattern changes.",
+      "Change the frequency and wavelength of the waves and observe the effects.",
+      "Identify areas of constructive interference (where waves amplify each other).",
+      "Identify areas of destructive interference (where waves cancel each other out).",
+      "Create a standing wave by adjusting the simulation parameters.",
+      "Relate your observations to real-world examples like noise-cancelling headphones or antennae design."
     ]
   }
 };

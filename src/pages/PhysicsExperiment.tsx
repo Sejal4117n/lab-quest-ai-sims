@@ -9,9 +9,9 @@ import RefractionSimulation from '@/components/physics/RefractionSimulation';
 import OhmsLawSimulation from '@/components/physics/OhmsLawSimulation';
 import NewtonsLawsSimulation from '@/components/physics/NewtonsLawsSimulation';
 import WaveInterferenceSimulation from '@/components/physics/WaveInterferenceSimulation';
+import ProjectileSimulation from '@/components/physics/ProjectileSimulation';
 import ExperimentSteps from '@/components/physics/ExperimentSteps';
 import { experiments } from '@/data/physicsExperiments';
-import { PhysicsExperimentData } from '@/types/experiments';
 
 const PhysicsExperiment = () => {
   const { experimentId } = useParams();
@@ -59,7 +59,9 @@ const PhysicsExperiment = () => {
           <Card className="mb-6">
             <CardContent className="pt-6">
               <h3 className="text-lg font-semibold mb-4">Interactive Physics Simulation</h3>
-              {experimentId === 'pendulum' ? (
+              {experimentId === 'projectile' ? (
+                <ProjectileSimulation />
+              ) : experimentId === 'pendulum' ? (
                 <PendulumSimulation />
               ) : experimentId === 'refraction' ? (
                 <div className="w-full">
