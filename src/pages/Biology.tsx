@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
@@ -19,6 +18,15 @@ const Biology = () => {
   }, []);
 
   const experiments = [
+    {
+      id: 'photosynthesis',
+      title: 'Photosynthesis in Aquatic Plants',
+      description: 'Measure the rate of photosynthesis by counting oxygen bubbles produced by aquatic plants under different light conditions.',
+      difficulty: 'Intermediate',
+      duration: '45 minutes',
+      image: '/placeholder.svg',
+      path: '/biology/photosynthesis'
+    },
     {
       id: 'osmosis',
       title: 'Observing Osmosis in a Potato',
@@ -63,15 +71,6 @@ const Biology = () => {
       duration: '30 minutes',
       image: '/placeholder.svg',
       path: '/biology/pollen-germination'
-    },
-    {
-      id: 'photosynthesis',
-      title: 'Photosynthesis in Aquatic Plants',
-      description: 'Measure the rate of photosynthesis by counting oxygen bubbles produced by aquatic plants under different light conditions.',
-      difficulty: 'Intermediate',
-      duration: '45 minutes',
-      image: '/placeholder.svg',
-      path: '/biology/photosynthesis'
     }
   ];
 
