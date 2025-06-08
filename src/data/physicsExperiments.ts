@@ -33,23 +33,6 @@ export const experiments: Record<string, PhysicsExperimentData> = {
       "Compare results between different launchers to identify their unique characteristics."
     ]
   },
-  "pendulum": {
-    title: "Simple Pendulum",
-    description: "Investigate how length and mass affect a pendulum's period",
-    difficulty: "Beginner",
-    duration: "20 minutes",
-    content: "This experiment explores the motion of a simple pendulum and the factors that influence its period (the time it takes to complete one full swing). You will discover that a pendulum's period depends primarily on its length and not on the mass of the bob or the amplitude of the swing (for small angles).",
-    steps: [
-      "Adjust the length of the pendulum using the slider.",
-      "Change the mass of the bob using the provided controls.",
-      "Start the pendulum in motion by clicking the 'Release' button.",
-      "Measure the time it takes for the pendulum to complete several oscillations.",
-      "Calculate the period by dividing the total time by the number of oscillations.",
-      "Repeat the experiment with different lengths and masses to compare results.",
-      "Plot your data and analyze the relationship between length and period.",
-      "Compare your experimental results with the theoretical formula: T = 2π√(L/g)."
-    ]
-  },
   "refraction": {
     title: "Light Refraction",
     description: "Explore how light bends when passing through different materials",
