@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
@@ -43,14 +42,6 @@ const Chemistry = () => {
       description: 'Determine the concentration of an acid or base by neutralizing it with a standard solution of known concentration.',
       difficulty: 'Intermediate',
       duration: '35 minutes',
-      image: '/placeholder.svg'
-    },
-    {
-      id: 'baking-soda',
-      title: 'Vinegar and Baking Soda Reaction',
-      description: 'Observe an acid-base reaction that produces carbon dioxide gas through the reaction of vinegar with baking soda.',
-      difficulty: 'Beginner',
-      duration: '20 minutes',
       image: '/placeholder.svg'
     }
   ];
