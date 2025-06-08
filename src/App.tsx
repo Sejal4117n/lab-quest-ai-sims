@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -23,6 +22,7 @@ import ChemistryVirtualLab from "./pages/ChemistryVirtualLab";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
 import About from "./pages/About";
+import Quiz from "./pages/Quiz";
 import "./App.css";
 
 // Create a client
@@ -43,6 +43,7 @@ const App = () => (
               <Route path="/chemistry" element={<Chemistry />} />
               <Route path="/physics" element={<Physics />} />
               <Route path="/about" element={<About />} />
+              <Route path="/quiz/:subject?" element={<Quiz />} />
               <Route path="/biology/:experimentId" element={<BiologyExperiment />} />
               <Route path="/biology/blood-groups" element={<BiologyBloodGroups />} />
               <Route path="/biology/catalase" element={<BiologyCatalaseExperiment />} />

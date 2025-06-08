@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import SiteHeader from '@/components/layout/SiteHeader';
 import ChatBotMentor from '@/components/ChatBotMentor';
-import { Bookmark, Clock, Microscope, CheckCircle2, Beaker, Zap } from 'lucide-react';
+import { Bookmark, Clock, Microscope, CheckCircle2, Beaker, Zap, Brain } from 'lucide-react';
 
 const Biology = () => {
   const [completedExperiments, setCompletedExperiments] = useState<string[]>([]);
@@ -137,6 +137,31 @@ const Biology = () => {
             </div>
           </div>
         </div>
+        
+        {/* Quiz Section */}
+        <Card className="mb-10 overflow-hidden hover:shadow-lg transition-shadow border-green-200 bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/30 dark:to-blue-900/30 dark:border-green-800/50">
+          <div className="p-6 flex items-center justify-between">
+            <div className="flex items-center">
+              <div className="w-16 h-16 bg-green-200 dark:bg-green-800 rounded-full flex items-center justify-center">
+                <Brain className="w-8 h-8 text-green-700 dark:text-green-300" />
+              </div>
+              <div className="ml-4">
+                <h3 className="text-2xl font-bold mb-1 dark:text-gray-50">Take the Biology Quiz</h3>
+                <p className="text-gray-700 dark:text-gray-300 mb-4">
+                  Test your understanding with 10 comprehensive questions covering all biology experiments
+                </p>
+                <Button asChild className="bg-green-600 hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-600">
+                  <Link to="/quiz/biology">
+                    Start Biology Quiz
+                  </Link>
+                </Button>
+              </div>
+            </div>
+            <div className="hidden md:flex space-x-4">
+              <Brain className="w-12 h-12 text-green-400 dark:text-green-500" />
+            </div>
+          </div>
+        </Card>
         
         <h2 className="text-2xl font-bold text-gray-900 mb-6">Available Experiments</h2>
         
