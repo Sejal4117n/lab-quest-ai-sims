@@ -13,7 +13,8 @@ const Biology = () => {
   // Simulate loading completed experiments from storage
   useEffect(() => {
     // In a real app, this would come from a database or localStorage
-    const mockCompletedExperiments = ['osmosis', 'onion-cells'];
+    // Removed 'onion-cells' from completed experiments
+    const mockCompletedExperiments = ['osmosis'];
     setCompletedExperiments(mockCompletedExperiments);
   }, []);
 
@@ -53,15 +54,6 @@ const Biology = () => {
       duration: '45 minutes',
       image: '/placeholder.svg',
       path: '/biology/catalase'
-    },
-    {
-      id: 'onion-cells',
-      title: 'Examining Onion Cells',
-      description: 'Observe plant cell structure by examining onion cells under a microscope and identifying key cell components.',
-      difficulty: 'Beginner',
-      duration: '25 minutes',
-      image: '/placeholder.svg',
-      path: '/biology/onion-cells'
     },
     {
       id: 'pollen-germination',
